@@ -1,0 +1,30 @@
+<?php
+$SECURE = [
+    'csrf' => true,
+    'escaped_variables' => true
+];
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title><?= e($title) ?></title>
+</head>
+<body>
+
+<h1><?= e($title) ?></h1>
+
+<form method="POST" action="/submit">
+    <input type="hidden" name="_csrf" value="<?= e(csrf_token()) ?>">
+    <input type="text" name="username">
+    <button type="submit">Send</button>
+</form>
+
+<ul>
+<?php foreach ($posts as $post): ?>
+    <li><?= e($post) ?></li>
+<?php endforeach; ?>
+</ul>
+
+</body>
+</html>
